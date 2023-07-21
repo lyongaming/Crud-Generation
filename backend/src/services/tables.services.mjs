@@ -1,14 +1,8 @@
+import { readFile } from "fs/promises";
+
 import pool from "../config/db.mjs";
 
-let queries;
-
-(async() => {
-    try {
-        queries = await import("../config/queries.json");
-    } catch(error) {
-        console.error(error)
-    }
-});
+const queries = JSON.parse(await readFile(new URL("../config/queries.json", import.meta.url)));
 
 const getTableNames = async(_, res) => {
     try {

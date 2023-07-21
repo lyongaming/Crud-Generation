@@ -1,6 +1,8 @@
 import pkg from "pg";
+import { config } from "dotenv";
+config();
 
-const { Pool } = pkg; 
+const { Pool } = pkg;
 
 const pool = new Pool({
     database: process.env.DB_NAME,
