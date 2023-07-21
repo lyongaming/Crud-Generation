@@ -1,3 +1,4 @@
 {
-    "getTableNames": "SELECT tablename AS name FROM pg_catalog.pg_tables WHERE schemaname = 'public';"
+    "getTableNames": "SELECT tablename AS name FROM pg_catalog.pg_tables WHERE schemaname = 'public';",
+    "getColumnsFromTable": "SELECT json_agg(column_name) AS columns FROM information_schema.columns WHERE table_name = $1"
 }
