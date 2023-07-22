@@ -80,8 +80,35 @@ const getTableData = async(tableName) => {
     return response;
 };
 
+const getColumnsInfo = async(tableName) => {
+    let response = {
+        success: false,
+        msg: "",
+        info: []
+    }
+
+    try {
+        const result = await pool.query(queries.getColumnsInfo, [tableName]);
+        const info = result.rows;
+        response = {
+            ...response,
+            success: true,
+            msg: `${tableName} columns info retrieved`,
+            info
+        }
+    } catch(error) {
+        console.error(error);
+        response = {
+            ...response,
+            msg: "Error in table"
+        }
+    }
+    return response;
+};
+
 export default {
     getTableNames,
     getColumnsFromTable,
-    getTableData
+    getTableData,
+    getColumnsInfo
 }
