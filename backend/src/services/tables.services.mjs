@@ -54,7 +54,34 @@ const getColumnsFromTable = async(tableName) => {
     return response;
 };
 
+const getTableData = async(tableName) => {
+    let response = {
+        success: false,
+        msg: "",
+        data: []
+    }
+
+    try {
+        const result = await pool.query(`SELECT * FROM ${tableName}`);
+        const data = result.rows;
+        response = {
+            ...response,
+            success: true,
+            msg: `${tableName} data retrieved`,
+            data
+        }
+    } catch(error) {
+        console.error(error);
+        response = {
+            ...response,
+            msg: "Error in table"
+        }
+    }
+    return response;
+};
+
 export default {
     getTableNames,
-    getColumnsFromTable
+    getColumnsFromTable,
+    getTableData
 }

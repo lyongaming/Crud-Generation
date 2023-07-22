@@ -9,3 +9,8 @@ export const getColumnsFromTable = async(req, res) => {
     const { success, msg, columns } = await tableServices.getColumnsFromTable(req.params.table);
     res.status(success ? 200 : 404).json(success ? { msg, columns } : columns);
 }
+
+export const getTableData = async(req, res) => {
+    const { success, msg, data } = await tableServices.getTableData(req.params.table);
+    res.status(success ? 200 : 404).json(success ? { msg, data } : data);
+}
