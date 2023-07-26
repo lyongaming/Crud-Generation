@@ -13,7 +13,7 @@ let tablenames = [];
     const response = await fetch("http://localhost:8080/tables");
     const data = await response.json();
     tablenames = data.tables.map(table => table.name);
-
+    
     if(tablenames.find(tablename => tablename === `${process.argv[2]}`)) {
         fileContent = fileContent.replace(/tablename/g, process.argv[2]);
         
@@ -37,5 +37,24 @@ let tablenames = [];
     } else {
         console.log(`${process.argv[2]} table doesn't exist`);
     }
-
+    
+    filePath = path.join(__dirname, "route-template.txt");
+    fileContent = fs.readFileSync(filePath, "utf-8");
+    
+    fileContent = fileContent.replace(/tablename/g, process.argv[2]);
+            
+    const routesPath = path.join(__dirname, "../routes");
+    filePath = path.join(__dirname, `../routes/${[process.argv[2]]}Routes.jsx`);
+    if(fs.existsSync(routesPath)) {
+        if(fs.existsSync(filePath)) {
+            console.log("The file already exists")
+        } else {
+            fs.writeFileSync(filePath, fileContent);
+            console.log(`${process.argv[2]}Routes.jsx file created`);
+        }
+    } else {
+        fs.mkdirSync(routesPath);
+        fs.writeFileSync(filePath, fileContent);
+        console.log(`${process.argv[2]}Routes.jsx file created`);
+    }
 })();

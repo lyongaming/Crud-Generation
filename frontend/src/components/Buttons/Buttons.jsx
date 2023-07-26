@@ -1,9 +1,14 @@
 import React from "react";
 
 const Buttons = ({ table }) => {
-    Leer() {
-        fetch(`localhost:8080/${tablename}`)
+    ReadData() {
+        fetch(`localhost:8080/${table}`)
     }
+
+    return (
+        <button onClick={ReadData}>Read</button>
+    );
+
 }
 
 export default Buttons;

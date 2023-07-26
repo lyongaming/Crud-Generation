@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Table from "../components/Table/Table";
 import Buttons from "../components/Buttons/Buttons";
+import Inputs from "../components/Inputs/Inputs";
 
 const tablenameCrud = (props) => {
 
+    const [columns, setColumns] = useState([]);
+    const [tableRows, setTableRows] = useState([]);
+
+
+    async GetColumns() {
+        const response = await fetch("localhost:8080/tables/tablename");
+        const data = await response.json();
+        setColumns(data.columns);
+    }
+
+    async GetData() {
+        const response = await fetch("localhost:8080/tablename");
+        const data = await response.json();
+        setTableData(data);
+    }
+
+    async UpdateData() {
+        const response = await fetch("localhost:8080/tablename/");
+    }
 
     return (
         <>
             <h1>tablename</h1>
-            <Table columns={ columns } />
-            <Buttons table={tablename}/>
+            <Table columns_name={ columns } table_rows={ table_rows } />
+            <Inputs table="tablename" />
+            <Buttons table="tablename" />
         </>
     );
 
