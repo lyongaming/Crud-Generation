@@ -8,7 +8,7 @@ const tablenameCrud = (props) => {
 
     return (
         <>
-            <h1>tablenames</h1>
+            <h1>tablename</h1>
             <Table columns={ columns } />
             <Buttons table={tablename}/>
         </>

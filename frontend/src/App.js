@@ -6,7 +6,7 @@ import UserRoute from "./routes/UserRoutes";
 const App = () => {
   return (
     <Routes>
-      <UserRoute />
+      {/* <UserRoute /> */}
     </Routes>
   );
 }
