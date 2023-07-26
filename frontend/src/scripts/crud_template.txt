@@ -1,0 +1,19 @@
+import React from "react";
+
+import Table from "../components/Table/Table";
+import Buttons from "../components/Buttons/Buttons";
+
+const tablenameCrud = (props) => {
+
+
+    return (
+        <>
+            <h1>tablename</h1>
+            <Table columns={ columns } />
+            <Buttons table={tablename}/>
+        </>
+    );
+
+}
+
+export default tablenameCrud;
