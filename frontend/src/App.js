@@ -1,8 +1,13 @@
-import Example from "./pages/Example";
+import React from "react";
+import { BrowserRouter as Routes } from "react-router-dom";
+
+import UserRoute from "./routes/UserRoutes";
 
 const App = () => {
   return (
-    <Example />
+    <Routes>
+      <UserRoute />
+    </Routes>
   );
 }
 
