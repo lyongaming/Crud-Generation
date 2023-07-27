@@ -5,9 +5,11 @@ const TableRow = ([ table_row ]) => {
     return (
         <tr>
             {
-                table_row.map(data => <td>{data}</td>);
+                table_row.map(data => <td>{data}</td>)
             }
         </tr>
     );
 
 }
+
+export default TableRow;
